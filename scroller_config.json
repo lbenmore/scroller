@@ -2,16 +2,16 @@
   "target": ".scroller",
   "sections": [
     {
-      "name": "blueviolet",
-      "label": "Blue Violet Page",
+      "name": "outside",
+      "label": "Outside",
       "height": 5,
       "content": {
-        "html": "./js/scroller/content/blueviolet/index.html",
+        "html": "./js/scroller/content/outside/index.html",
         "css": [
-          "./js/scroller/content/blueviolet/styles.css"
+          "./js/scroller/content/outside/styles.css"
         ],
         "js": [
-          "./js/scroller/content/blueviolet/scripts.js"
+          "./js/scroller/content/outside/scripts.js"
         ]
       }
     },
