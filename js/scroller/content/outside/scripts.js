@@ -3,7 +3,7 @@
   
   function stylizeTitle (el, percent) {
     const startPerc = 0.33;
-    const endPerc = 1;
+    const endPerc = 0.8;
     const perc = (percent - startPerc) / (endPerc - startPerc);
     const midPerc = (startPerc + endPerc) / 2;
     const halfPerc = (percent - midPerc) / (endPerc - midPerc);
@@ -37,7 +37,7 @@
   
   function stylizeTrees (el, percent) {
     const startPerc = 0.25;
-    const endPerc = 0.9;
+    const endPerc = 0.7;
     const perc = (percent - startPerc) / (endPerc - startPerc);
     
     if (startPerc < percent && percent < endPerc) {
@@ -59,8 +59,8 @@
   }
   
   function stylizeMoon (el, percent) {
-    const startPerc = 0.33;
-    const endPerc = 0.75;
+    const startPerc = 0.25;
+    const endPerc = 0.5;
     const perc = (percent - startPerc) / (endPerc - startPerc);
     
     if (startPerc < percent && percent < endPerc) {
@@ -83,7 +83,7 @@
   
   function stylizeMountain (el, percent) {
     const startPerc = 0;
-    const endPerc = 0.5;
+    const endPerc = 0.3;
     const perc = (percent - startPerc) / (endPerc - startPerc);
     
     if (startPerc < percent && percent < endPerc) {
@@ -104,6 +104,17 @@
     }
   }
   
+  function fadeOut (els, ratio) {
+    const perc = (ratio - 0.8) / (1 - 0.8);
+    els.push(document.querySelector(`[class*="section--${name}"]`));
+    els.forEach(el => {
+      Object.assign(el.style, {
+        opacity: 1 - perc
+      });
+    });
+    
+  }
+  
   win.addEventListener(`scroller.${name}`, evt => {
     const section = document.querySelector(`[class*="section--${name}"]`);
     if (section) {
@@ -112,6 +123,9 @@
       const moon = section.querySelector('.moon');
       const trees = section.querySelector('.trees');
       const title = section.querySelector('.title');
+      
+      if (ratio > 0.8) fadeOut([mountain, moon, trees, title], ratio);
+      else section.style.opacity = 1;
       
       stylizeMountain(mountain, ratio);
       stylizeMoon(moon, ratio);
