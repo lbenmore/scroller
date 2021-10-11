@@ -1,0 +1,47 @@
+{
+  "target": ".scroller",
+  "sections": [
+    {
+      "name": "home",
+      "label": "Home Page",
+      "height": 5,
+      "content": {
+        "html": "./js/scroller/content/home/index.html",
+        "css": [
+          "./js/scroller/content/home/styles.css"
+        ],
+        "js": [
+          "./js/scroller/content/home/scripts.js"
+        ]
+      }
+    },
+    {
+      "name": "dummy1",
+      "label": "Content Page 1",
+      "height": 7,
+      "content": {
+        "html": "./js/scroller/content/dummy1/index.html",
+        "css": [
+          "./js/scroller/content/dummy1/styles.css"
+        ],
+        "js": [
+          "./js/scroller/content/dummy1/scripts.js"
+        ]
+      }
+    },
+    {
+      "name": "dummy2",
+      "label": "Content Page 2",
+      "height": 3,
+      "content": {
+        "html": "./js/scroller/content/dummy2/index.html",
+        "css": [
+          "./js/scroller/content/dummy2/styles.css"
+        ],
+        "js": [
+          "./js/scroller/content/dummy2/scripts.js"
+        ]
+      }
+    }
+  ]
+}
