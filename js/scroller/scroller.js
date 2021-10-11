@@ -19,39 +19,48 @@ class Scroller {
     }
   }
   
+  onScroll (evt) {
+    try {
+      const { scrollTop } = evt.target;
+      const { height: targetHeight } = this.target.getBoundingClientRect();
+      const current = this.sections.reduce((result, section) => {
+        if (result.section) return result;
+        
+        result.end = result.start + (targetHeight * section.height) - targetHeight;
+        
+        if (result.start < scrollTop && scrollTop < result.end) {
+          result.section = section;
+        } else {
+          result.start += section.height * targetHeight - targetHeight;
+        }
+        
+        return result;
+      }, { start: 0, end: 0, section: null });
+      
+      const { section, start, end } = current;
+      
+      if (section) {
+        const perc = (scrollTop - start) / (end - start);
+        section.name !== this.active.config.name && this.renderSection(section);
+        dispatchEvent(new CustomEvent(`scroller.${section.name}`, {
+          detail: {
+            current: section.name,
+            ratio: scrollTop > 0 && perc || 0
+          }
+        }));
+      } else {
+        this.log(current);
+      }
+    } catch (err) {
+      console.log('ERROR:', err.message);
+    }
+  }
+  
   initEventListeners () {
     try {
       this.log('init event listeners');
       
-      this.elements.main.addEventListener('scroll', evt => {
-        const { scrollTop } = evt.target;
-        const { height: targetHeight } = this.target.getBoundingClientRect();
-        const current = this.sections.reduce((result, section, i) => {
-          if (result.section) return result;
-          
-          result.end = result.start + section.height * targetHeight;
-          
-          if (result.start < scrollTop && scrollTop < result.end) {
-            result.section = section;
-          } else {
-            result.start += section.height * targetHeight;
-            result.end = result.start;
-          }
-          
-          return result;
-        }, { start: 0, end: 0, section: null });
-        
-        const { section, start, end } = current;
-        
-        section && section.name !== this.active.config.name && this.renderSection(section);
-        
-        dispatchEvent(new CustomEvent('scroller', {
-          detail: {
-            current: section && section.name || this.active.config.name,
-            ratio: scrollTop > 0 && (scrollTop - start) / (end - start) || 0
-          }
-        }));
-      });
+      this.elements.main.addEventListener('scroll', this.onScroll.bind(this));
     } catch (err) {
       console.log('ERROR:', err.message);
     }
@@ -127,6 +136,8 @@ class Scroller {
       this.initEventListeners();
       
       this.active = new Section(this.sections[0], this);
+      
+      window.scroller = this;
     } catch (err) {
       console.log('ERROR:', err.message);
     }

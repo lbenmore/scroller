@@ -11,7 +11,6 @@ class Section {
     try {
       this.log('remove');
       
-      removeEventListener('scroller', this.boundScroll);
       this.elements.container.parentNode.removeChild(this.elements.container);
       this.stylesheets.forEach(ss => ss.parentNode.removeChild(ss));
       this.scripts.forEach(s => s.parentNode.removeChild(s));
@@ -20,16 +19,6 @@ class Section {
     } catch (err) {
       console.log('ERROR:', err.message);
     }
-  }
-  
-  handleScroll (evt) {
-    const { current, ratio } = evt.detail;
-    this.log(Math.round(ratio * 100));
-  }
-  
-  initEventListeners () {
-    this.boundScroll = this.handleScroll.bind(this);
-    addEventListener('scroller', this.boundScroll);
   }
   
   initScripts (paths) {
@@ -108,7 +97,6 @@ class Section {
       this.initContent(this.config.content.html);
       this.initStylesheets(this.config.content.css);
       this.initScripts(this.config.content.js);
-      this.initEventListeners();
     } catch (err) {
       console.log('ERROR:', err.message);
     }
