@@ -2,44 +2,44 @@
   "target": ".scroller",
   "sections": [
     {
-      "name": "home",
-      "label": "Home Page",
+      "name": "blueviolet",
+      "label": "Blue Violet Page",
       "height": 5,
       "content": {
-        "html": "./js/scroller/content/home/index.html",
+        "html": "./js/scroller/content/blueviolet/index.html",
         "css": [
-          "./js/scroller/content/home/styles.css"
+          "./js/scroller/content/blueviolet/styles.css"
         ],
         "js": [
-          "./js/scroller/content/home/scripts.js"
+          "./js/scroller/content/blueviolet/scripts.js"
         ]
       }
     },
     {
-      "name": "dummy1",
-      "label": "Content Page 1",
+      "name": "springgreen",
+      "label": "Spring Green Page",
       "height": 7,
       "content": {
-        "html": "./js/scroller/content/dummy1/index.html",
+        "html": "./js/scroller/content/springgreen/index.html",
         "css": [
-          "./js/scroller/content/dummy1/styles.css"
+          "./js/scroller/content/springgreen/styles.css"
         ],
         "js": [
-          "./js/scroller/content/dummy1/scripts.js"
+          "./js/scroller/content/springgreen/scripts.js"
         ]
       }
     },
     {
-      "name": "dummy2",
-      "label": "Content Page 2",
+      "name": "crimson",
+      "label": "Crimson Page ",
       "height": 3,
       "content": {
-        "html": "./js/scroller/content/dummy2/index.html",
+        "html": "./js/scroller/content/crimson/index.html",
         "css": [
-          "./js/scroller/content/dummy2/styles.css"
+          "./js/scroller/content/crimson/styles.css"
         ],
         "js": [
-          "./js/scroller/content/dummy2/scripts.js"
+          "./js/scroller/content/crimson/scripts.js"
         ]
       }
     }

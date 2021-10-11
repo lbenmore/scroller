@@ -1,5 +1,5 @@
 ;(function (win, doc) {
-  const name = 'home';
+  const name = 'crimson';
   win.addEventListener(`scroller.${name}`, evt => {
     const section = document.querySelector(`[class*="section--${name}"]`);
     if (section) {
