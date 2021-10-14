@@ -23,6 +23,8 @@ class Section {
   
   initScripts (paths) {
     try {
+      const that = this;
+      
       this.log('init scripts', paths);
       
       this.scripts = [];
@@ -31,8 +33,9 @@ class Section {
           .then(res => res.text())
           .then(content => {
             const script = document.createElement('script');
+            script.type = 'module';
             this.scripts.push(script);
-            script.innerHTML = content;
+            script.innerHTML = `${content}`;
             document.body.appendChild(script);
           });
         });

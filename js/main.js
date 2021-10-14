@@ -15,7 +15,7 @@ import Scroller from './scroller/scroller.js';
     
     fetch('./scroller_config.json')
       .then(res => res.json())
-      .then(json => new Scroller({ ...json, debug: 0 }))
+      .then(json => new Scroller({ ...json, debug: 1 }))
       .catch(err => console.log(err));
   }
 

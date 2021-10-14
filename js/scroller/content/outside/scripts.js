@@ -12,13 +12,13 @@
       Object.assign(el.style, {
         opacity: `${1 * perc}`,
         zIndex: '0',
-        transform: `translateY(${-200 * (perc * 2)}%)`
+        transform: `translateY(${-200 * (perc * 2)}%) scale(${0.5 + (0.5 * percent)})`
       });
     } else if (midPerc < percent && percent < endPerc) {
       Object.assign(el.style, {
         opacity: `${1 * perc}`,
         zIndex: '1',
-        transform: `translateY(${-200 + (200 * halfPerc)}%)`
+        transform: `translateY(${-200 + (200 * halfPerc)}%) scale(${0.5 + (0.5 * percent)})`
       });
     } else if (percent < startPerc) {
       Object.assign(el.style, {
