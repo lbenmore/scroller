@@ -48,8 +48,6 @@ class Scroller {
             ratio: scrollTop > 0 && perc || 0
           }
         }));
-      } else {
-        this.log(current);
       }
     } catch (err) {
       console.log('ERROR:', err.message);

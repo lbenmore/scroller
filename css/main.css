@@ -1,12 +1,13 @@
 body {
+  --vh: 1vh;
+  
   margin: 0;
   width: 100vw;
-  height: 100vh;
+  height: calc(var(--vh) * 100);
 }
 
 .scroller {
   width: 100vw;
   height: 100vh;
-  color: white;
   font-family: sans-serif;
 }
