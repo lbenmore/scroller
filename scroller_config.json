@@ -39,7 +39,8 @@
           "./js/scroller/content/game/styles.css"
         ],
         "js": [
-          "./js/scroller/content/game/scripts.js"
+          "./js/scroller/content/game/scripts.js",
+          "./js/scroller/content/game/blocks.js"
         ]
       }
     }
