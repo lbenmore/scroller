@@ -25,20 +25,30 @@ class Section {
     try {
       const that = this;
       
-      this.log('init scripts', paths);
+      that.log('init scripts', paths);
       
-      this.scripts = [];
-      paths.forEach(path => {
+      that.scripts = [];
+      
+      paths.forEach((path, index) => {
+        const script = document.createElement('script');
+        script.type = 'module';
+        
+        script.onload = () => that.log('loaded script', path);
+        script.onerror = () => that.log('errored script', path);
+        
         fetch(path)
           .then(res => res.text())
           .then(content => {
-            const script = document.createElement('script');
-            script.type = 'module';
-            this.scripts.push(script);
-            script.innerHTML = `${content}`;
+            script.innerHTML = `
+              ;(function (win, doc) {
+                ${content}
+                try { win.addEventListener('scroller.${that.config.name}', onScroll); } catch (err) { }
+              })(window, window.document);
+            `;
             document.body.appendChild(script);
+            that.scripts.push(script);
           });
-        });
+      });
     } catch (err) {
       console.log('ERROR:', err.message);
     }
